@@ -65,3 +65,15 @@ body .link:hover {
     color: whitesmoke;
     margin: 50px;
 }
+
+::selection {
+    background: #f0f0f0;
+    color: #292929;
+    /* WebKit/Blink Browsers */
+}
+
+::-moz-selection {
+    background: #f0f0f0;
+    color: #292929;
+    /* Gecko Browsers */
+}
