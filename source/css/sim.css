@@ -1,0 +1,44 @@
+#reveil {
+    margin: 10px;
+    background-color: rgb(58, 156, 212);
+    height: 250px;
+    width: 400px;
+    border-radius: 10px;
+}
+
+#top-box {
+    height: 20px;
+    background-color: rgb(223, 67, 67);
+    border-radius: 10px 10px 0 0;
+}
+
+#lcd {
+    position: relative;
+    border: 2px solid #000000;
+    width: 180px;
+    height: 44px;
+    border-radius: 2px;
+    margin: 0 auto;
+    margin-top: 95px;
+}
+
+#lcd-inside {
+    font-family: "Lucida Console", Monaco, monospace, sans-serif;
+    /*background-color: rgb(15, 131, 160);*/
+    /*color: #FFFFFF;
+    border-color: rgb(41, 41, 41);
+    /*border-left: 5px solid rgb(77, 181, 207);*/
+    font-size: 18px;
+}
+
+.on {
+    background-color: rgb(15, 131, 160);
+    border-left: 5px solid rgb(77, 181, 207);
+    color: #FFFFFF;
+}
+
+.off {
+    background-color: rgb(0, 37, 46);
+    border-left: 5px solid rgb(0, 31, 39);
+    color: rgb(124, 124, 124);
+}
