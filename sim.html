@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Simulateur de réveil</title>
+</head>
+
+<body>
+
+    <h1>Simulateur de reveil</h1>
+
+    <p>
+        Cette page est une simulation des fonctionnalités de mon réveil.
+        <br> Attention, elle n'inclut pas toutes les fonctionnalités du réveil.
+        <br> Vous pouvez uniquement tester les fonctionnalités liées aux boutons, ce réveil ne peut pas être utilisée pour la fonction du détecteur de mouvement.
+        <br> Voici le guide d'utilisation:
+        <ol>
+            <li type="disc">truc 1</li>
+            <li type="disc">truc 2</li>
+            <li type="disc">truc 3...</li>
+        </ol>
+    </p>
+
+    <div id="buttons">
+        <button class="red" onclick="set()">set</button>
+        <button class="blue">up</button>
+        <button class="blue">down</button>
+        <button class="yellow">mode</button>
+    </div>
+
+    <div id="lcd">
+        <a id="l1">________________</a>
+        <br>
+        <a id="l2">________________</a>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    mode = 0;
+    dodate = true;
+
+    /*function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }*/
+    function sleep(sleepDuration) {
+        var now = new Date().getTime();
+        while (new Date().getTime() < now + sleepDuration) { /* do nothing */ }
+    }
+
+    function setup() {
+        console.log("nothing here");
+    }
+
+    /////////  MENU BUTTON CODE
+    function set() {
+        console.log('set!')
+        dodate = false;
+        if (mode == 0) {
+            document.getElementById("l1").innerHTML = '___________' + document.getElementById("l1").innerHTML.substring(10, 16)
+            sleep(300);
+            //lcd.setCursor(0, 1);
+            //lcd.print("Al: ");
+            document.getElementById("l1").innerHTML = 'Al:_________' + document.getElementById("l1").innerHTML.substring(10, 16)
+
+            //lcd.setCursor(7, 1);
+            //if (alm < 10) lcd.print("0");
+            //lcd.print(alm);
+            //lcd.print("   ");
+
+
+            //lcd.setCursor(4, 1);
+            //lcd.write(byte(0));
+            //lcd.write(byte(0));
+            //sleep(6000);
+
+            //lcd.setCursor(4, 1);
+            //if (alh < 10) lcd.print("0");
+            //lcd.print(alh);
+            //lcd.print(":");
+            mode = 1;
+        } else if (mode == 1) {
+            mode = 2;
+
+            //lcd.setCursor(7, 1);
+            //lcd.write(byte(0));
+            //lcd.write(byte(0));
+            //sleep(6000);
+
+            //lcd.setCursor(7, 1);
+            //if (alm < 10) lcd.print("0");
+            //lcd.print(alm);
+            //lcd.print("   ");
+
+        } else if (mode == 2) {
+            //lcd.setCursor(0, 1);
+            //lcd.print("         ");
+            mode = 0;
+            //lcd.setCursor(0, 1);
+            //lcd.print("           ");
+            //sleep(3000);
+            dodate = true;
+        }
+    }
+
+
+    function loop() {
+        var dt = new Date();
+
+
+
+        if (dt.getHours() < 10) {
+            hours = "0" + dt.getHours();
+        } else hours = dt.getHours();
+        if (dt.getMinutes() < 10) {
+            minutes = "0" + dt.getMinutes();
+        } else minutes = dt.getMinutes();
+        if (dt.getSeconds() < 10) {
+            seconds = "0" + dt.getSeconds();
+        } else seconds = dt.getSeconds();
+        if (dt.getDate() < 10) {
+            date = "0" + dt.getDate();
+        } else date = dt.getDate();
+        if (dt.getMonth() < 9) {
+            month = "0" + Number(dt.getMonth() + 1);
+        } else month = dt.getMonth();
+
+        if (dodate = true) {
+            lone = hours + ":" + minutes + ":" + seconds + "________";
+            ltwo = date + "/" + month + "/" + dt.getFullYear() + "______"
+        }
+
+
+
+
+        document.getElementById("l1").innerHTML = lone;
+        document.getElementById("l2").innerHTML = ltwo;
+
+
+
+
+        //console.log("do loop things");
+    }
+
+    setup();
+    setInterval(loop, 500);
+</script>
