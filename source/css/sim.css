@@ -10,22 +10,23 @@
     background-color: rgb(219, 219, 219);
     border-radius: 10px;
     width: 420px;
+    margin-bottom: 50px;
 }
 
 body {
     font-family: "Arial Black", Gadget, sans-serif;
-    background-color: rgb(206, 255, 199)
+    background-color: rgb(253, 255, 253)
 }
 
 #all {
     margin: 50px;
-    background-color: rgb(221, 239, 255);
+    background-color: rgb(241, 248, 255);
     border-radius: 10px;
 }
 
 #inside-all {
     position: relative;
-    //margin: 30px;
+    margin: 30px;
 }
 
 #reveil {
@@ -175,6 +176,7 @@ input:checked+.slider:before {
 
 #detect {
     display: block;
+    margin-bottom: 50px;
 }
 
 

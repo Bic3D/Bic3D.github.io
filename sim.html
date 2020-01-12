@@ -13,11 +13,11 @@
     <div id='all'>
         <div id='inside-all'>
 
-            <h1>Simulateur de reveil</h1>
+            <h1>Simulateur de réveil</h1>
 
             <p>
                 Cette page est une simulation des fonctionnalités de mon réveil.
-                <br> Attention, elle n'inclut pas toutes les fonctionnalités du réveil (ex: animations...).
+                <br> Attention, elle n'inclut pas ses fonctionnalités (ex: animations...).
                 <br> Voici le guide d'utilisation:
                 <ol>
                     <li type="disc">Le bouton jaune permet de régler l'heure du réveil. Utilisez les deux bleus pour changer les valeurs
@@ -232,19 +232,25 @@
         function dostout() {
             dotime = false;
             dodate = false;
+            doit = true;
             var interval = setInterval(function() {
                 // bip bip bip...
                 if (pirValue == 0) {
                     //console.log("bip bip bip");
-                    document.getElementsByClassName("bipoff")[0].className = "bipon";
+                    if (doit == true) {
+                        document.getElementsByClassName("bipoff")[0].className = "bipon";
+                    }
                 } else {
-                    dotime = true;
-                    dodate = true;
-                    try {
-                        document.getElementsByClassName("on")[0].className = "off";
-                    } catch {}
-                    document.getElementsByClassName("bipon")[0].className = "bipoff";
-                    clearInterval(interval)
+                    if (doit == true) {
+                        dotime = true;
+                        dodate = true;
+                        try {
+                            document.getElementsByClassName("on")[0].className = "off";
+                        } catch {}
+                        document.getElementsByClassName("bipon")[0].className = "bipoff";
+                        clearInterval(interval);
+                        doit = false;
+                    }
                 }
             }, 500);
         }
