@@ -1,3 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Play&display=swap');
+#header {
+    background-color: rgb(255, 213, 0);
+}
+
+#crochet {
+    color: #FF8400;
+}
+
+#inside-inside {
+    margin-left: 25px;
+}
+
+#inside {
+    background-color: #ffffff;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+#blank {
+    height: 20px;
+}
+
+#small-blank {
+    height: 1px;
+}
+
+#header h1 {
+    margin-top: 0px;
+    margin-left: 5%;
+    font-size: 39px;
+    line-height: 2;
+}
+
 #part-one {
     margin: 10px;
     background-color: rgb(219, 219, 219);
@@ -14,8 +50,11 @@
 }
 
 body {
-    font-family: "Arial", Gadget, sans-serif;
-    background-color: rgb(253, 255, 253)
+    background-color: #25aad3;
+    font-family: 'Play', sans-serif;
+    margin: 0;
+    /*font-family: "Arial", Gadget, sans-serif;
+    background-color: rgb(253, 255, 253)*/
 }
 
 #all {
@@ -222,4 +261,17 @@ button {
 
 .red {
     background-color: rgb(231, 66, 66);
+}
+
+.link {
+    color: #2498bb;
+}
+
+.link:hover {
+    color: #FFFFFF;
+    background-color: #25aad3;
+}
+
+.link:active {
+    color: #127391;
 }

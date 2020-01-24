@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Play&display=swap');
+body {
+    background-color: #25aad3;
+    font-family: 'Play', sans-serif;
+    margin: 0;
+}
+
+#inside {
+    background-color: #ffffff;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+#header {
+    background-color: rgb(255, 213, 0);
+}
+
+#header h1 {
+    margin-top: 0px;
+    margin-left: 5%;
+    font-size: 39px;
+    line-height: 2;
+}
+
+#crochet {
+    color: #FF8400;
+}
+
+#blank {
+    height: 20px;
+}
+
+#small-blank {
+    height: 1px;
+}
+
+#inside-inside {
+    margin-left: 25px;
+}
+
+.link {
+    color: #2498bb;
+}
+
+.link:hover {
+    color: #FFFFFF;
+    background-color: #25aad3;
+}
+
+.link:active {
+    color: #127391;
+}

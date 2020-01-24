@@ -9,311 +9,317 @@
     <title>Simulateur de réveil</title>
 </head>
 
-<div>
-    <div id='all'>
-        <div id='inside-all'>
+<body>
+    <div id="header">
+        <h1>Simulateur de réveil</h1>
+    </div>
+    <div>
+        <div id="inside">
+            <div id='inside-inside'>
+                <div id="small-blank"></div>
+                <h1><a id="crochet">></a> Simulation</h1>
+                <p>
+                    Cette page est une simulation du réveil.
+                    <br> Attention, elle n'inclut pas toutes ses fonctionnalités (ex: animations...).
+                    <br> Voici le guide d'utilisation:
+                    <ol>
+                        <li type="disc">Le bouton jaune permet de régler l'heure du réveil. Utilisez les deux bleus pour changer les valeurs
+                        </li>
+                        <li type="disc">Le bouton bleu à gauche permet d'éteindre ou d'allumer le rétro-éclairage.</li>
+                        <li type="disc">Le bouton bleu à droite permet de désactiver le réveil.</li>
+                        <li type="disc">Le bouton rouge permet de switcher entre le mode de détection de mouvement et le mode alarme.
+                        </li>
+                        <li type="disc">Le toggle switch en bas permet de simuler un mouvement détecté par le détecteur de mouvement, quand il est activé il y a du mouvement, quand il ne l'est pas il n'y en a pas.
+                        </li>
+                        <li type="disc">Le rond gris change de couleur quand le réveil sonne.</li>
+                    </ol>
+                </p>
 
-            <h1>Simulateur de réveil</h1>
-
-            <p>
-                Cette page est une simulation du réveil.
-                <br> Attention, elle n'inclut pas toutes ses fonctionnalités (ex: animations...).
-                <br> Voici le guide d'utilisation:
-                <ol>
-                    <li type="disc">Le bouton jaune permet de régler l'heure du réveil. Utilisez les deux bleus pour changer les valeurs
-                    </li>
-                    <li type="disc">Le bouton bleu à gauche permet d'éteindre ou d'allumer le rétro-éclairage.</li>
-                    <li type="disc">Le bouton bleu à droite permet de désactiver le réveil.</li>
-                    <li type="disc">Le bouton rouge permet de switcher entre le mode de détection de mouvement et le mode alarme.
-                    </li>
-                    <li type="disc">Le toggle switch en bas permet de simuler un mouvement détecté par le détecteur de mouvement, quand il est activé il y a du mouvement, quand il ne l'est pas il n'y en a pas.
-                    </li>
-                    <li type="disc">Le rond gris change de couleur quand le réveil sonne.</li>
-                </ol>
-            </p>
-
-            <div id='part-one'>
-                <div id="buttons">
-                    <div id="buttons-inside">
-                        <button class="yellow" onclick="set()"></button>
-                        <button class="blue" onclick="up()"></button>
-                        <button class="blue" onclick="down()"></button>
-                        <button class="red" onclick="red()"></button>
+                <div id='part-one'>
+                    <div id="buttons">
+                        <div id="buttons-inside">
+                            <button class="yellow" onclick="set()"></button>
+                            <button class="blue" onclick="up()"></button>
+                            <button class="blue" onclick="down()"></button>
+                            <button class="red" onclick="red()"></button>
+                        </div>
                     </div>
-                </div>
 
-                <div id="reveil">
-                    <div id="top-box"></div>
-                    <div id='buzzer'>
-                        <span id="dot" class='bipoff'></span>
-                    </div>
-                    <div id="lcd">
-                        <div id='lcd-inside' class='on'>
-                            <a id="l1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                            <br>
-                            <a id="l2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <div id="reveil">
+                        <div id="top-box"></div>
+                        <div id='buzzer'>
+                            <span id="dot" class='bipoff'></span>
+                        </div>
+                        <div id="lcd">
+                            <div id='lcd-inside' class='on'>
+                                <a id="l1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                <br>
+                                <a id="l2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id='part-two'>
-                <div id="detect">
-                    <a>Simuler du mouvement</a>
-                    <!--button class="red" onclick="sim()">Simulate Movement Detection</buttont-->
-                    <label class="switch">
-                        <input type="checkbox" onchange='move(this)' id="move" checked>
-                        <span class="slider round"></span>
-                    </label>
+                <div id='part-two'>
+                    <div id="detect">
+                        <a>Simuler du mouvement</a>
+                        <!--button class="red" onclick="sim()">Simulate Movement Detection</buttont-->
+                        <label class="switch">
+                            <input type="checkbox" onchange='move(this)' id="move" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
                 </div>
+                <div id="small-blank"></div>
             </div>
         </div>
-    </div>
-    </body>
+        <div id="blank"></div>
 
-    <script>
-        mode = 0;
-        alarm = ' ON';
-        dodate = true;
-        dotime = true;
-        clockset = false;
-        detectMode = 0;
-        pirValue = false;
-        go = 1;
-        h = 12;
-        m = 0;
+</body>
 
-        /*function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }*/
-        function sleep(sleepDuration) {
-            var now = new Date().getTime();
-            while (new Date().getTime() < now + sleepDuration) { /* do nothing */ }
+<script>
+    mode = 0;
+    alarm = ' ON';
+    dodate = true;
+    dotime = true;
+    clockset = false;
+    detectMode = 0;
+    pirValue = false;
+    go = 1;
+    h = 12;
+    m = 0;
+
+    /*function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }*/
+    function sleep(sleepDuration) {
+        var now = new Date().getTime();
+        while (new Date().getTime() < now + sleepDuration) { /* do nothing */ }
+    }
+
+    function add0(variable) {
+        if (variable < 10) {
+            return "0" + variable;
         }
+        return variable;
+    }
 
-        function add0(variable) {
-            if (variable < 10) {
-                return "0" + variable;
-            }
-            return variable;
+    function move(checkboxElem) {
+        if (checkboxElem.checked) {
+            pirValue = true;
+        } else {
+            pirValue = false;
         }
+    }
 
-        function move(checkboxElem) {
-            if (checkboxElem.checked) {
-                pirValue = true;
+    function write(text, line) {
+        l = text.length;
+        //document.getElementById(line).innerHTML = text + document.getElementById(line).innerHTML.substring(text.length, document.getElementById(line).innerHTML.length)
+        for (i = 0; i < (13 - l); i++) {
+            text += "&nbsp;";
+        }
+        if (line == 'l1') {
+            if (alarm) text += ' ON';
+            else text += 'OFF';
+        }
+        if (line == 'l2') {
+            if (detectMode == 1) text += 'mdt';
+            else text += 'alm';
+        }
+        document.getElementById(line).innerHTML = text;
+    }
+
+    /////////  MENU BUTTON CODE
+    function set() {
+        //console.log('set!')
+        clockset = true;
+        dodate = false;
+        if (mode == 0) {
+            write('Al: ' + add0(h) + ':' + add0(m), 'l2');
+            mode = 1;
+        } else if (mode == 1) {
+            mode = 2;
+
+        } else if (mode == 2) {
+            mode = 0;
+            dodate = true;
+            clockset = false;
+        }
+    }
+
+    /////////// RED BUTTON CODE
+    function red() {
+        //dodate = false;
+        if (detectMode == 0 && clockset == false) {
+            /*lcd.setCursor(0, 1);
+            lcd.print("           ");
+            lcd.setCursor(0, 1);
+            lcd.print("Move detect.");*/
+            detectMode = 1;
+            write(ltwo, 'l2');
+        } else if (detectMode != 0 && clockset == false) {
+            /*lcd.setCursor(0, 1);
+            lcd.print("           ");
+            lcd.setCursor(0, 1);
+            lcd.print("Al. mode");*/
+            detectMode = 0;
+            write(ltwo, 'l2');
+        } else if (clockset == true) {
+            clockset = false;
+        }
+        //dodate = true;
+    }
+
+    /////////// UP BUTTON CODE
+    function up() {
+        if (mode == 1) {
+            if (h < 23) {
+                h += 1;
             } else {
-                pirValue = false;
+                h = 0;
             }
-        }
-
-        function write(text, line) {
-            l = text.length;
-            //document.getElementById(line).innerHTML = text + document.getElementById(line).innerHTML.substring(text.length, document.getElementById(line).innerHTML.length)
-            for (i = 0; i < (13 - l); i++) {
-                text += "&nbsp;";
-            }
-            if (line == 'l1') {
-                if (alarm) text += ' ON';
-                else text += 'OFF';
-            }
-            if (line == 'l2') {
-                if (detectMode == 1) text += 'mdt';
-                else text += 'alm';
-            }
-            document.getElementById(line).innerHTML = text;
-        }
-
-        /////////  MENU BUTTON CODE
-        function set() {
-            //console.log('set!')
-            clockset = true;
-            dodate = false;
-            if (mode == 0) {
-                write('Al: ' + add0(h) + ':' + add0(m), 'l2');
-                mode = 1;
-            } else if (mode == 1) {
-                mode = 2;
-
-            } else if (mode == 2) {
-                mode = 0;
-                dodate = true;
-                clockset = false;
-            }
-        }
-
-        /////////// RED BUTTON CODE
-        function red() {
-            //dodate = false;
-            if (detectMode == 0 && clockset == false) {
-                /*lcd.setCursor(0, 1);
-                lcd.print("           ");
-                lcd.setCursor(0, 1);
-                lcd.print("Move detect.");*/
-                detectMode = 1;
-                write(ltwo, 'l2');
-            } else if (detectMode != 0 && clockset == false) {
-                /*lcd.setCursor(0, 1);
-                lcd.print("           ");
-                lcd.setCursor(0, 1);
-                lcd.print("Al. mode");*/
-                detectMode = 0;
-                write(ltwo, 'l2');
-            } else if (clockset == true) {
-                clockset = false;
-            }
-            //dodate = true;
-        }
-
-        /////////// UP BUTTON CODE
-        function up() {
-            if (mode == 1) {
-                if (h < 23) {
-                    h += 1;
-                } else {
-                    h = 0;
-                }
-                write('Al: ' + add0(h) + ':' + add0(m), 'l2');
-            } else if (mode == 2) {
-                if (m < 59) {
-                    m += 1;
-                } else {
-                    m = 0;
-                }
-                write('Al: ' + add0(h) + ':' + add0(m), 'l2');
-            } else if (mode == 0 && clockset == false) {
-                if (document.getElementsByClassName("on")[0]) {
-                    document.getElementsByClassName("on")[0].className = "off";
-                } else {
-                    document.getElementsByClassName("off")[0].className = "on";
-                }
-            } else if (clockset == true) {
-                dt.hour += 1;
-            }
-        }
-
-        /////////// DOWN BUTTON CODE
-        function down() {
-            if (mode == 1) {
-                if (h > 0) {
-                    h -= 1;
-                } else {
-                    h = 23;
-                }
-                write('Al: ' + add0(h) + ':' + add0(m), 'l2');
-            } else if (mode == 2) {
-                if (m > 0) {
-                    m -= 1;
-                } else {
-                    m = 59;
-                }
-                write('Al: ' + add0(h) + ':' + add0(m), 'l2');
+            write('Al: ' + add0(h) + ':' + add0(m), 'l2');
+        } else if (mode == 2) {
+            if (m < 59) {
+                m += 1;
             } else {
-                if (alarm) {
-                    alarm = false;
-                    write(lone, 'l1');
+                m = 0;
+            }
+            write('Al: ' + add0(h) + ':' + add0(m), 'l2');
+        } else if (mode == 0 && clockset == false) {
+            if (document.getElementsByClassName("on")[0]) {
+                document.getElementsByClassName("on")[0].className = "off";
+            } else {
+                document.getElementsByClassName("off")[0].className = "on";
+            }
+        } else if (clockset == true) {
+            dt.hour += 1;
+        }
+    }
 
-                } else if (alarm == false) {
-                    /*lcd.setCursor(0,1);
-                    lcd.print("           ");
-                    delay(300);
-                    lcd.setCursor(0,1);
-                    lcd.print("Alarm ON  ");
-                    lcd.setCursor(13,0);
-                    lcd.print(" ON");
-                    delay(1000);
-                    lcd.setCursor(0,1);
-                    lcd.print("           ");
-                    delay(300);*/
-                    alarm = true;
-                    write(lone, 'l1');
-                }
+    /////////// DOWN BUTTON CODE
+    function down() {
+        if (mode == 1) {
+            if (h > 0) {
+                h -= 1;
+            } else {
+                h = 23;
+            }
+            write('Al: ' + add0(h) + ':' + add0(m), 'l2');
+        } else if (mode == 2) {
+            if (m > 0) {
+                m -= 1;
+            } else {
+                m = 59;
+            }
+            write('Al: ' + add0(h) + ':' + add0(m), 'l2');
+        } else {
+            if (alarm) {
+                alarm = false;
+                write(lone, 'l1');
+
+            } else if (alarm == false) {
+                /*lcd.setCursor(0,1);
+                lcd.print("           ");
+                delay(300);
+                lcd.setCursor(0,1);
+                lcd.print("Alarm ON  ");
+                lcd.setCursor(13,0);
+                lcd.print(" ON");
+                delay(1000);
+                lcd.setCursor(0,1);
+                lcd.print("           ");
+                delay(300);*/
+                alarm = true;
+                write(lone, 'l1');
             }
         }
+    }
 
-        function dostout() {
-            dotime = false;
-            dodate = false;
-            doit = true;
-            var interval = setInterval(function() {
-                // bip bip bip...
-                if (pirValue == 0) {
-                    //console.log("bip bip bip");
-                    if (doit == true) {
-                        document.getElementsByClassName("bipoff")[0].className = "bipon";
-                    }
-                } else {
-                    if (doit == true) {
-                        dotime = true;
-                        dodate = true;
-                        try {
-                            document.getElementsByClassName("on")[0].className = "off";
-                        } catch {}
-                        document.getElementsByClassName("bipon")[0].className = "bipoff";
-                        clearInterval(interval);
-                        doit = false;
-                    }
+    function dostout() {
+        dotime = false;
+        dodate = false;
+        doit = true;
+        var interval = setInterval(function() {
+            // bip bip bip...
+            if (pirValue == 0) {
+                //console.log("bip bip bip");
+                if (doit == true) {
+                    document.getElementsByClassName("bipoff")[0].className = "bipon";
                 }
-            }, 500);
-        }
-
-
-        function loop() {
-            var dt = new Date();
-            //console.log(dodate);
-
-            lone = add0(dt.getHours()) + ":" + add0(dt.getMinutes()) + ":" + add0(dt.getSeconds());
-            ltwo = add0(dt.getDate()) + "/" + add0(dt.getMonth() + 1) + "/" + dt.getFullYear()
-                /*lonel = lone.length;
-                ltwol = ltwo.length;
-                for (i = 0; i < (16 - lonel); i++) {
-                    lone += "&nbsp;";
-                }
-                for (i = 0; i < 16 - ltwol; i++) {
-                    ltwo += "&nbsp;";
-                }*/
-
-
-            if (dotime == true) write(lone, 'l1'); //document.getElementById("l1").innerHTML = lone;
-            if (dodate == true) write(ltwo, 'l2'); //document.getElementById("l2").innerHTML = ltwo;
-            //console.log("do loop things");
-
-
-
-            ///////// CHECK ALARM
-            if (h == dt.getHours() && m == dt.getMinutes() && 0 == dt.getSeconds() && alarm && detectMode == 0) {
-                if (go == 1) {
-                    dostout();
-                    try {
-                        document.getElementsByClassName("off")[0].className = "on";
-                    } catch {}
-                } else {
+            } else {
+                if (doit == true) {
+                    dotime = true;
+                    dodate = true;
                     try {
                         document.getElementsByClassName("on")[0].className = "off";
                     } catch {}
-                    go = 0;
+                    document.getElementsByClassName("bipon")[0].className = "bipoff";
+                    clearInterval(interval);
+                    doit = false;
                 }
             }
-            if (detectMode == 1) {
-                if (pirValue == 1) {
-                    //console.log('bip bip bip')
-                    document.getElementsByClassName("bipoff")[0].className = "bipon";
-                } else {
-                    document.getElementsByClassName("bipon")[0].className = "bipoff";
-                }
-                /*while (pirValue==1) {
-                  if (vw_get_message((byte *) &valeur, &taille_message)) {
-                //Serial.println(valeur); // Affiche le message
-                pirValue = valeur;
-                dot(valeur, 2);}
-                
-                  digitalWrite(buz,HIGH);
-                  delay(100);
-                  digitalWrite(buz,LOW);
-                  delay(100);
-                }*/
+        }, 500);
+    }
+
+
+    function loop() {
+        var dt = new Date();
+        //console.log(dodate);
+
+        lone = add0(dt.getHours()) + ":" + add0(dt.getMinutes()) + ":" + add0(dt.getSeconds());
+        ltwo = add0(dt.getDate()) + "/" + add0(dt.getMonth() + 1) + "/" + dt.getFullYear()
+            /*lonel = lone.length;
+            ltwol = ltwo.length;
+            for (i = 0; i < (16 - lonel); i++) {
+                lone += "&nbsp;";
+            }
+            for (i = 0; i < 16 - ltwol; i++) {
+                ltwo += "&nbsp;";
+            }*/
+
+
+        if (dotime == true) write(lone, 'l1'); //document.getElementById("l1").innerHTML = lone;
+        if (dodate == true) write(ltwo, 'l2'); //document.getElementById("l2").innerHTML = ltwo;
+        //console.log("do loop things");
+
+
+
+        ///////// CHECK ALARM
+        if (h == dt.getHours() && m == dt.getMinutes() && 0 == dt.getSeconds() && alarm && detectMode == 0) {
+            if (go == 1) {
+                dostout();
+                try {
+                    document.getElementsByClassName("off")[0].className = "on";
+                } catch {}
+            } else {
+                try {
+                    document.getElementsByClassName("on")[0].className = "off";
+                } catch {}
+                go = 0;
             }
         }
+        if (detectMode == 1) {
+            if (pirValue == 1) {
+                //console.log('bip bip bip')
+                document.getElementsByClassName("bipoff")[0].className = "bipon";
+            } else {
+                document.getElementsByClassName("bipon")[0].className = "bipoff";
+            }
+            /*while (pirValue==1) {
+              if (vw_get_message((byte *) &valeur, &taille_message)) {
+            //Serial.println(valeur); // Affiche le message
+            pirValue = valeur;
+            dot(valeur, 2);}
+            
+              digitalWrite(buz,HIGH);
+              delay(100);
+              digitalWrite(buz,LOW);
+              delay(100);
+            }*/
+        }
+    }
 
-        setInterval(loop, 500);
-    </script>
+    setInterval(loop, 500);
+</script>
 
 </html>
