@@ -564,8 +564,6 @@ void loop()
 
   delay(80);
   first = false;
-  /*if (dt.second == 0) digitalWrite(buz,HIGH);
-  else digitalWrite(buz,LOW);*/
 }
 void wlight()
 {

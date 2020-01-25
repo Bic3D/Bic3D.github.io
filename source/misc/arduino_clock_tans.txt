@@ -1,8 +1,5 @@
 #include <VirtualWire.h>
 
-// commande pour linux:
-// sudo chmod a+rw /dev/ttyUSB0
-
 int pirPin = 6;
 int pirValue;
 float valeur = 0;
@@ -10,10 +7,6 @@ float valeur = 0;
 void setup() {
   Serial.begin(9600);
   pinMode(pirPin, INPUT);
-  //pinMode(12, OUTPUT);
-
-  // Initialisation de la biblioth�que VirtualWire
-  // Vous pouvez changez les broches RX/TX/PTT avant vw_setup() si n�cessaire
   vw_setup(2000);
   
   Serial.println("Go !"); 
@@ -24,12 +17,10 @@ void loop() {
   // Lit un nombre depuis le port série
   pirValue = digitalRead(pirPin);
 
+  // Le met dans valeur, puis l'écrit
   valeur = pirValue;
   Serial.println(pirValue);
-  //digitalWrite(12, pirValue);
   
   vw_send((byte *) &valeur, sizeof(valeur)); // On envoie le message
-  ///Serial.println("En envoyage...");
-  //vw_wait_tx(); // On attend la fin de l'envoi
   
 }
