@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Email Analyser docs</title>
+</head>
+
+<body>
+    <h1>This is the documentation of "Email Analyser"</h1>
+    <h2>Main page :</h2>
+    <div id="main-page">
+        <h3>"Start Analyse" Button</h3>
+        <p>Press it to begin the mail filtering.</p>
+        <h3>"Mails data folder".</h3>
+        <p>Use the "Browse" Button to choose a folder that contain the emails txt files you want to Analyse.</p>
+        <p>An email file has to be in this form:</p>
+        <div id="code"><code>
+        first@email.com
+        <br> second@email.com
+        <br> third@email.com
+        </code>
+        </div>
+        <p>One email by line, separated by a line break.</p>
+        <h3>"Output File name"</h3>
+        <p>Choose a name for the exported file.</p>
+        <h2>Settings :</h2>
+        <h3>"Output Email Folder"</h3>
+        <p>This is the path to the where the output will go.</p>
+        <h3>"Data folder"</h3>
+        <p>This is the path the data is.</p>
+        <p>Modify it only if you know what you are doing.</p>
+        <h4>Files to provide:</h4>
+        <ul>
+            <li>spam.txt</li>
+            <li>freeemail.txt</li>
+            <li>providers.txt</li>
+            <li>names.txt</li>
+            <li>namelist.csv</li>
+            <li>A "names" Folder containing "en.txt" and "fr.txt"</li>
+        </ul>
+        <p>The txt files have to be in the same format as the email file.</p>
+    </div>
+</body>
+<style>
+    h2 {
+        font-size: 35px;
+    }
+    
+    body {
+        font-family: Helvetica, sans-serif;
+        margin-left: 200px;
+    }
+    
+    #code {
+        margin-left: 20px;
+    }
+    
+    #main-page {
+        margin-left: 20px;
+    }
+</style>
+
+</html>
